@@ -1,2 +1,2 @@
-# Project_Rub_Hew
+# Rub_Hew
 Project Rub-Hew (App Dev)

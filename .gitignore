@@ -1,0 +1,31 @@
+# dependencies
+node_modules
+
+# next
+.next
+out
+
+# build
+dist
+build
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+logs
+*.log
+
+# caches
+.cache
+*.tsbuildinfo
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db

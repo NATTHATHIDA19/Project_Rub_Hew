@@ -1,0 +1,10 @@
+{
+  "name": "project_rub_hew",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "bun --filter '*' dev",
+    "dev:web": "bun --filter web dev",
+    "dev:api": "bun --filter api dev"
+  }
+}
