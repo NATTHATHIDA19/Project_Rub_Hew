@@ -1,17 +1,23 @@
-export default async function Home() {
-  const base = process.env.NEXT_PUBLIC_API_URL!;
-  const res = await fetch(`${base}/api/hello`, {
-    // ถ้าเป็นข้อมูลที่เปลี่ยนบ่อย:
-    cache: "no-store"
-  });
-  const data = await res.json();
+import NavbarMain from "./components/navbarMain";
+import Sidebar from "./components/sidebar";
+import FilterChipsAndAdd from "./components/filterChipsAndAdd";
 
+export default function HomePage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold">Next → Hono direct</h1>
-      <pre className="mt-4 rounded-lg bg-zinc-900 p-4 text-zinc-100">
-        {JSON.stringify(data, null, 2)}
-      </pre>
+    <main className="min-h-screen bg-[#FFF8EC] text-[#D5C2A3]">
+      <NavbarMain />
+
+      <div className="flex">
+        <Sidebar />
+
+        <div className="flex-1">
+          <FilterChipsAndAdd />
+
+          <section className="p-6">
+            {/* content ตรงกลาง/การ์ดโพสต์ ใส่ตรงนี้ */}
+          </section>
+        </div>
+      </div>
     </main>
   );
 }
