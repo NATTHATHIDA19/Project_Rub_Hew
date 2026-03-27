@@ -1,3 +1,5 @@
+import { createId } from "./id";
+
 export type StoredUser = {
   id: string;
   username: string;
@@ -22,4 +24,4 @@ export const isValidEmail = (email: string) =>
 
 export const isValidPassword = (password: string) => password.length >= 6;
 
-export const createToken = () => crypto.randomUUID();
+export const createToken = () => createId();

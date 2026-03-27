@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { createToken, isValidEmail, isValidPassword, users } from "@/lib/auth-store";
+import { createId } from "@/lib/id";
 
 export async function POST(req: Request) {
   const body = await req.json();
@@ -37,7 +38,7 @@ export async function POST(req: Request) {
   }
 
   const user = {
-    id: crypto.randomUUID(),
+    id: createId(),
     username,
     email,
     phone,

@@ -1,19 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import LogoThin from "./logo";
 
 export default function NavbarMain() {
     const router = useRouter();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+      if (typeof window === "undefined") {
+        return false;
+      }
+
+      return !!window.localStorage.getItem("authToken");
+    });
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-      const token = localStorage.getItem("authToken");
-      setIsLoggedIn(!!token);
+      const handleStorageChange = () => {
+        setIsLoggedIn(!!window.localStorage.getItem("authToken"));
+      };
+
+      window.addEventListener("storage", handleStorageChange);
+
+      return () => {
+        window.removeEventListener("storage", handleStorageChange);
+      };
     }, []);
 
     const onUserClick = () => {
